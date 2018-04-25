@@ -11,7 +11,7 @@ import { Component } from "@angular/core";
       <TextField
         hint="Email Address"
         keyboardType="email"
-        [text]="email"
+        [(ngModel)]="email"
         autocorrect="false"
         autocaptalizationType="none"
       ></TextField>
