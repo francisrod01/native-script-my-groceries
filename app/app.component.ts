@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 
+import { User } from './shared/user/user';
+
 @Component({
   selector: "my-app",
   template: `
@@ -7,17 +9,22 @@ import { Component } from "@angular/core";
       <Image
         src="res://logo_login"
         stretch="none"
-        horizontalAlignment="center"></Image>
+        horizontalAlignment="center"
+      ></Image>
+      
       <TextField
         hint="Email Address"
         keyboardType="email"
-        [(ngModel)]="email"
+        [(ngModel)]="user.email"
         autocorrect="false"
         autocaptalizationType="none"
       ></TextField>
+
       <TextField
         hint="Password"
-        secure="true"></TextField>
+        secure="true"
+        [(ngModel)]="user.password"
+      ></TextField>
 
       <Button
         [text]="isLoggingIn ? 'Sign in' : 'Sign up'"
@@ -36,13 +43,17 @@ import { Component } from "@angular/core";
   ]
 })
 export class AppComponent {
-  email = "nativescriptrocks@telerik.com";
+  user: User;
   isLoggingIn = true;
 
-  submit() {
-    alert("You're using: " + this.email);
+  constructor() {
+    this.user = new User();
+  }
 
-    console.log("You're using: ", this.email);
+  submit() {
+    alert("You're using: " + this.user.email);
+
+    console.log("You're using: ", this.user.email);
   }
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
