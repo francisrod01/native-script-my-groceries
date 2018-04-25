@@ -17,7 +17,11 @@ import { Component } from "@angular/core";
         hint="Password"
         secure="true"></TextField>
 
-      <Button text="Sign in" class="submit-button"></Button>
+      <Button
+        text="Sign in"
+        class="submit-button"
+        (tap)="submit()"
+      ></Button>
       <Button text="Sign up for Groceries"></Button>
     </StackLayout>
   `,
@@ -26,4 +30,8 @@ import { Component } from "@angular/core";
     "pages/login/login.css"
   ]
 })
-export class AppComponent {}
+export class AppComponent {
+  submit() {
+    console.log("I clicked to sign in button!");
+  }
+}
