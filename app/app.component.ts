@@ -11,8 +11,10 @@ import { Component } from "@angular/core";
       <TextField
         hint="Email Address"
         keyboardType="email"
+        [text]="email"
         autocorrect="false"
-        autocaptalizationType="none"></TextField>
+        autocaptalizationType="none"
+      ></TextField>
       <TextField
         hint="Password"
         secure="true"></TextField>
@@ -31,7 +33,11 @@ import { Component } from "@angular/core";
   ]
 })
 export class AppComponent {
+  email = "nativescriptrocks@telerik.com";
+
   submit() {
-    console.log("I clicked to sign in button!");
+    alert("You're using: " + this.email);
+
+    console.log("You're using: ", this.email);
   }
 }
