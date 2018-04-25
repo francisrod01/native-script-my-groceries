@@ -1,0 +1,1 @@
+/home/paneladm/projects/native-script-apps/my-groceries/platforms/android/app/src/main/assets/metadata
