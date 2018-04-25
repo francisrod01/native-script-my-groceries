@@ -23,6 +23,7 @@ yarn.lock
 /**/*.js
 
 tmp/
+platforms/
 
 # IDEs and editors
 /.idea

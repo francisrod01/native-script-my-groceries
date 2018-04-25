@@ -1,4 +1,0 @@
-#Wed Apr 25 17:01:02 BRT 2018
-base.0=/home/paneladm/projects/native-script-apps/my-groceries/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
