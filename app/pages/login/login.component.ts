@@ -1,8 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, Route } from "@angular/router";
+import { Page } from "ui/page";
 
-import { UserService } from '../../shared/user/user.service';
-import { User } from '../../shared/user/user';
+import { UserService } from "../../shared/user/user.service";
+import { User } from "../../shared/user/user";
 
 @Component({
   selector: "login",
@@ -15,12 +16,21 @@ import { User } from '../../shared/user/user';
     "pages/login/login.css"
   ]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   user: User;
   isLoggingIn = true;
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private page: Page
+  ) {
     this.user = new User();
+  }
+
+  ngOnInit() {
+    this.page.actionBarHidden = true;
+    this.page.backgroundImage = "res://bg_login";
   }
 
   submit() {
