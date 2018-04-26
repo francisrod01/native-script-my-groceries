@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getCommonHeaders() {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append("Content-Type", "application/json");
     headers.append("Authorization", Config.authHeader);
     return headers;
