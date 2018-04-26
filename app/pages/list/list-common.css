@@ -8,6 +8,18 @@
   margin-left: 10;
   margin-right: 5;
 }
+ListView {
+  opacity: 0;
+}
 TextField {
   color: white;
+}
+.visible {
+  animation-name: show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

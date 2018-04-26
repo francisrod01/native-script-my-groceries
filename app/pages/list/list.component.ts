@@ -19,6 +19,7 @@ import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 export class ListComponent implements OnInit {
   groceryList: Array<Grocery> = [];
   isLoading = true;
+  listLoaded = false;
   grocery = ""
   @ViewChild("groceryTextField") groceryTextField: ElementRef;
 
@@ -32,6 +33,7 @@ export class ListComponent implements OnInit {
           this.groceryList.unshift(groceryObject);
         });
         this.isLoading = false;
+        this.listLoaded = true;
       });
   }
 
