@@ -35,6 +35,19 @@ export class GroceryListService {
     .catch(this.handleErrors);
   }
 
+  add(name: string) {
+    return this.http.post(
+      this.baseUrl,
+      JSON.stringify({ Name: name }),
+      { headers: this.getCommonHeaders() }
+    )
+    .map(res => res.json())
+    .map(data => {
+      return new Grocery(data._id, data.name);
+    })
+    .catch(this.handleErrors);
+  }
+
   getCommonHeaders() {
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
