@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   moduleId: module.id,
   templateUrl: "./list.html",
   styleUrls: [
-    "./list-commons.css",
+    "./list-common.css",
     "./list.css"
   ]
 })
