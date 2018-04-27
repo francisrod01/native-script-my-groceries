@@ -63,4 +63,12 @@ export class ListComponent implements OnInit {
         }
       )
   }
+
+  share() {
+    const listString = this.groceryList
+      .map(grocery => grocery.name)
+      .join(", ")
+      .trim();
+    SocialShare.shareText(listString);
+  }
 }
