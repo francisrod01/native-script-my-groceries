@@ -8,10 +8,15 @@ declare var NSForegroundColorAttributeName: any;
 
 
 export function setHintColor(args: { view: TextField, color: Color }) {
-  const dictionary = new NSDictionary(
-    [args.color.ios],
-    [NSForegroundColorAttributeName]
-  );
-  args.view.ios.attributedPlaceholder = NSAttributedString.alloc()
-    .initWithStringAttributes(args.view.hint, dictionary);
+  if (args.view.android) {
+    args.view.android.setHintTextColor(args.color.android);
+  }
+  if (args.view.ios) {
+    const dictionary = new NSDictionary(
+      [args.color.ios],
+      [NSForegroundColorAttributeName]
+    );
+    args.view.ios.attributedPlaceholder = NSAttributedString.alloc()
+      .initWithStringAttributes(args.view.hint, dictionary);
+  }
 }
