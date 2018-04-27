@@ -6,6 +6,7 @@
   ></Image>
   
   <TextField
+    #email
     hint="Email Address"
     keyboardType="email"
     [(ngModel)]="user.email"
@@ -14,6 +15,7 @@
   ></TextField>
 
   <TextField
+    #password
     hint="Password"
     secure="true"
     [(ngModel)]="user.password"

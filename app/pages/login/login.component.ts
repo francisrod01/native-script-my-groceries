@@ -3,6 +3,8 @@ import { Router, Route } from "@angular/router";
 import { Page } from "ui/page";
 import { Color } from "color";
 import { View } from "ui/core/view";
+import { setHintColor } from "../../utils/hint-util";
+import { TextField } from "ui/text-field";
 
 import { UserService } from "../../shared/user/user.service";
 import { User } from "../../shared/user/user";
@@ -22,6 +24,8 @@ export class LoginComponent implements OnInit {
   user: User;
   isLoggingIn = true;
   @ViewChild("container") container: ElementRef;
+  @ViewChild("email") email: ElementRef;
+  @ViewChild("password") password: ElementRef;
 
   constructor(
     private router: Router,
@@ -29,6 +33,20 @@ export class LoginComponent implements OnInit {
     private page: Page
   ) {
     this.user = new User();
+  }
+
+  setTextFieldColors() {
+    const emailTextField = <TextField>this.email.nativeElement;
+    const passwordTextField = <TextField>this.password.nativeElement;
+
+    const mainTextColor = new Color(this.isLoggingIn ? "black": "#C4AFB4");
+    
+    emailTextField.color = mainTextColor;
+    passwordTextField.color = mainTextColor;
+
+    const hintColor = new Color(this.isLoggingIn ? "#ACA6A7" : "#C4AFB4");
+    setHintColor({ view: emailTextField, color: hintColor });
+    setHintColor({ view: passwordTextField, color: hintColor });
   }
 
   ngOnInit() {
@@ -69,6 +87,7 @@ export class LoginComponent implements OnInit {
   }
   toggleDisplay() {
     this.isLoggingIn = !this.isLoggingIn;
+    this.setTextFieldColors();
     const container = <View>this.container.nativeElement;
     container.animate({
       backgroundColor: this.isLoggingIn ? new Color("white") : new Color("#301217"),
