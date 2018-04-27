@@ -1,3 +1,9 @@
+ListView {
+  opacity: 0;
+}
+TextField {
+  color: white;
+}
 .add-bar {
   background-color: #CB1D00;
   padding: 5 10;
@@ -8,11 +14,11 @@
   margin-left: 10;
   margin-right: 5;
 }
-ListView {
-  opacity: 0;
-}
-TextField {
-  color: white;
+.delete-container {
+  background-color: #CB1D00;
+  padding: 5;
+  height: 20;
+  margin-right: 8;
 }
 .visible {
   animation-name: show;

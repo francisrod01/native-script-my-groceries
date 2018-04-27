@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, NgZone, OnInit, ViewChild } from "@angular/core";
 import { TextField } from "ui/text-field";
 import * as SocialShare from "nativescript-social-share";
 
@@ -24,7 +24,10 @@ export class ListComponent implements OnInit {
   grocery = ""
   @ViewChild("groceryTextField") groceryTextField: ElementRef;
 
-  constructor(private groceryListService: GroceryListService) {}
+  constructor(
+    private groceryListService: GroceryListService,
+    private zone: NgZone
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -62,6 +65,17 @@ export class ListComponent implements OnInit {
           this.grocery = "";
         }
       )
+  }
+
+  delete(grocery: Grocery) {
+    this.groceryListService.delete(grocery.id)
+      .subscribe(() => {
+        // Running the array splice in a zone ensures that change detection gets triggered.
+        this.zone.run(() => {
+          const index = this.groceryList.indexOf(grocery);
+          this.groceryList.splice(index, 1);
+        });
+      });
   }
 
   share() {
